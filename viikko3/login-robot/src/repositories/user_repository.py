@@ -1,5 +1,5 @@
 from entities.user import User
-
+import re
 
 class UserRepository:
     def __init__(self):
@@ -21,6 +21,23 @@ class UserRepository:
         return users_with_username_list[0] if len(users_with_username_list) > 0 else None
 
     def create(self, user):
+        
+        if len(user.username) < 3:
+            raise Exception(
+                f"User with username {user.username} is too short!"
+            )
+
+        if len(user.password) < 3:
+            raise Exception(
+                f"Password should more than 3 values"
+            )
+        
+        if (re.match("^[a-z]+$", f"{user.username}")) == False:
+            raise Exception(
+                f"Username should be only letters! "
+            )
+
+
         users = self.find_all()
 
         existing_user = self.find_by_username(user.username)
@@ -29,6 +46,7 @@ class UserRepository:
             raise Exception(
                 f"User with username {user.username} already exists"
             )
+
 
         users.append(user)
 

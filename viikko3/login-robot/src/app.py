@@ -30,5 +30,4 @@ class App:
     def _read_credentials(self):
         username = self.io.read("Username: ")
         password = self.io.read("Password: ")
-
         return (username, password)
