@@ -6,23 +6,24 @@ def main():
     response = requests.get(url).json()
 
     print("JSON-muotoinen vastaus:")
-    print(response)
+  #  print(response)
 
     players = []
 
     for player_dict in response:
-        player = Player(
-            player_dict['name'],
-            player_dict['team'],
-            player_dict['goals'],
-            player_dict['assists']
+        if player_dict['nationality'] == "FIN":
+            player = Player(
+                player_dict['name'],
+                player_dict['team'],
+                player_dict['goals'],
+                player_dict['assists']
 
-        )
+            )
 
-        players.append(player)
+            players.append(player)
 
     print("Oliot:")
-
+    players = sorted(players, key=lambda player: (-(player.assists+player.goals),player.name))
     for player in players:
         print(player)
 

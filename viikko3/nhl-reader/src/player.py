@@ -6,4 +6,4 @@ class Player:
         self.assists = assists
 
     def __str__(self):
-        return f"{self.name} team {self.team} goals {self.goals} assists {self.assists}"
+        return f"""{self.name.ljust(35)}{self.team} {self.goals} + {self.assists} = {self.goals+self.assists}"""
