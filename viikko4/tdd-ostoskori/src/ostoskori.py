@@ -35,6 +35,17 @@ class Ostoskori:
         # tyhjentää ostoskorin
 
     def ostokset(self):
-        return self.ostoskori
+        ostokset_l = []
+        nimet = []
+        for x in self.ostoskori:
+            if x.nimi() in nimet:
+                for y in ostokset_l:
+                    if y.tuotteen_nimi() == x.nimi():
+                        y.muuta_lukumaaraa(1)
+            else:   
+                ostokset_l.append(Ostos(x))
+                nimet.append(x.nimi())
+
+        return ostokset_l
         # palauttaa listan jossa on korissa olevat ostos-oliot
         # kukin ostos-olio siis kertoo mistä tuotteesta on kyse JA kuinka monta kappaletta kyseistä tuotetta korissa on
