@@ -38,3 +38,9 @@ class TestOstoskori(unittest.TestCase):
         self.kori.lisaa_tuote(self.auto)
 
         self.assertEqual(self.kori.tavaroita_korissa(),2)
+    
+    def test_kahden_saman_lisäys_on_2x_hinta(self):
+        self.kori.lisaa_tuote(self.auto)
+        self.kori.lisaa_tuote(self.auto)
+
+        self.assertEqual(self.kori.hinta(),self.auto.hinta()*2)
