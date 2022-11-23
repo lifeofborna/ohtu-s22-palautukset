@@ -113,3 +113,4 @@ class TestOstoskori(unittest.TestCase):
         self.kori.tyhjenna()
 
         self.assertEqual(len(self.kori.ostoskori), 0)
+        
