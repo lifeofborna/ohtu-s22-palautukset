@@ -55,7 +55,7 @@ class TennisGame:
     def score_else(self):
         score = ""
         scores = {0:'Love', 1:'Fifteen', 2:'Thirty', 3:'Forty'}
-
+        
         for i in range(1, 3):
             if i == 1:
                 temp_score = self.player_score_1
